@@ -17,13 +17,13 @@ class MainViewModel (private val repository: Repository) : ViewModel() {
     }
 
     private fun fetchCharacters() {
-//        viewModelScope.launch {
-//            try {
-//                _characterLiveData.value = repository.getCharacters().results
-//                Log.d(TAG, "${_characterLiveData.value}")
-//            } catch (e: Exception) {
-//                Log.d(TAG, e.stackTraceToString())
-//            }
-//        }
+        viewModelScope.launch {
+            try {
+                _characterLiveData.value = repository.getCharacters().results
+                Log.d(TAG, "${_characterLiveData.value}")
+            } catch (e: Exception) {
+                Log.d(TAG, e.stackTraceToString())
+            }
+        }
  }
 }
