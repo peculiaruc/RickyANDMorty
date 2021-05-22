@@ -1,9 +1,11 @@
 package com.peculiaruc.rickyandmortyapp.model
 
+import com.squareup.moshi.Json
+
 data class Data(
 
-  //  @SerializedName("results")
+
+    @Json(name = "result")
     val results: List<Result>
 )
 
- //   : Serializable

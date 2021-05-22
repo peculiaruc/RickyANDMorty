@@ -1,20 +1,19 @@
 package com.peculiaruc.rickyandmortyapp.model
 
+import com.squareup.moshi.Json
+
 
 data class Result(
-
-  //  @SerializedName("name")
+    @Json(name = "name")
     val name: String,
-  //  @SerializedName("status")
-    val status: String,
-  //  @SerializedName("image")
-    val photoUrl: String,
 
-    val id: Int,
+    @Json(name = "status")
+    val status: String,
+
+    @Json(name = "species")
     val species: String,
-    val gender: String,
- //   @SerializedName("origin")
-    val origin: Origin
+
+    @Json(name = "image")
+    val image: String
 )
 
-  //  : Serializable

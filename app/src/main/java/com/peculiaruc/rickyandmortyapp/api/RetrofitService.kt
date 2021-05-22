@@ -1,5 +1,7 @@
 package com.peculiaruc.rickyandmortyapp.api
 
+import com.peculiaruc.rickyandmortyapp.R
+import com.peculiaruc.rickyandmortyapp.model.CharaterResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import org.w3c.dom.CharacterData
@@ -10,18 +12,16 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import java.net.URI.create
 
-class RetrofitService {
 
-    private val BASE_URL = "https://rickandmortyapi.com/api/character/"
+   private val BASE_URL = "https://rickandmortyapi.com/"
 
     interface RetrofitService {
-
-        @GET("api/character/")
-        suspend fun fetchCharatername(): CharacterData
+        @GET("api/character")
+        suspend fun fetchCharacters(): CharaterResponse
     }
 
     //add retrofit library
-    val moshi = Moshi.Builder().build()
+    val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
 
     val retrofit = Retrofit.Builder().addConverterFactory(MoshiConverterFactory.create(moshi))
@@ -29,8 +29,15 @@ class RetrofitService {
 
     //create a signton for easily accessing the api service
     object Api {
-//        val retrofitService: RetrofitService by lazy {
-//            retrofit.create(RetrofitService::class.java)
-//        }
+
+        val apiService: RetrofitService by lazy {
+            Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
+                .build()
+                .create(RetrofitService::class.java)
+        }
+
     }
-}
+
+
