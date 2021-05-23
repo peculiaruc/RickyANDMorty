@@ -17,7 +17,7 @@ import java.net.URI.create
 
     interface RetrofitService {
         @GET("api/character")
-        suspend fun fetchCharacters(): CharaterResponse
+        suspend fun fetchCharacters(result: String): CharaterResponse
     }
 
     //add retrofit library
