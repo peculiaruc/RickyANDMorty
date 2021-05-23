@@ -6,10 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.peculiaruc.rickyandmortyapp.R
+import com.peculiaruc.rickyandmortyapp.adapter.MainAdapter
+import com.peculiaruc.rickyandmortyapp.databinding.FragmentMainBinding
+import com.peculiaruc.rickyandmortyapp.model.Result
 
 
 class MainFragment : Fragment() {
 
+
+    private var binding: FragmentMainBinding? = null
+    private var result = mutableListOf< Result>()
+    private lateinit var adapter: MainAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
