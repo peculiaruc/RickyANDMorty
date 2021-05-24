@@ -48,10 +48,12 @@ class MainFragment : Fragment() {
 
         viewModel.chaLiveData.observe(viewLifecycleOwner, Observer {
             result.addAll(it)
+            adapter.notifyDataSetChanged()
 
             Log.e("HELP", it[0].name)
             binding?.recyclerView?.visibility = View.VISIBLE
         })
+
 
         val adapter = MainAdapter(result)
         binding?.recyclerView?.layoutManager =
